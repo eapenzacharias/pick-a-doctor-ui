@@ -21,7 +21,7 @@ const IntroductoryPage = () => (
         </button>
       </div>
     </div>
-    <img src={doctorFigure} alt="Doctor figure" className="max-w-[45%]" />
+    <img src={doctorFigure} alt="Doctor figure" className="max-w-[45%] max-h-[90%] px-5" />
   </div>
 );
 
