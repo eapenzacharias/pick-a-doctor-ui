@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUpForm from './components/authPages/SignUpForm';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h1 className="text-3xl font-bold underline">
           Hello world!
         </h1>
@@ -18,6 +16,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <SignUpForm />
     </div>
   );
 }
