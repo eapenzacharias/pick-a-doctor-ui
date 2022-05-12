@@ -7,8 +7,6 @@ const LandingView = () => {
   const [slide, setSlide] = useState(1);
 
   useEffect(() => {
-    // eslint-disable-next-line
-    console.log(`Which slide ${slide}`);
   }, [slide]);
 
   const slideSwap = (slideNumber) => {
@@ -19,7 +17,7 @@ const LandingView = () => {
     <div className={styles.LandingView}>
       {slide === 1 ? <IntroductoryPage /> : null}
       {slide === 2 ? <AboutUs /> : null}
-      <div className="fixed bottom-6 right-6">
+      <div className="fixed bottom-6 right-9">
         <div
           className={`w-3 h-3 my-5 rounded-full border-2 border-solid border-white cursor-pointer ${
             slide === 1 ? 'bg-white' : 'bg-transparent'
