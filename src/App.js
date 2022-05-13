@@ -1,4 +1,5 @@
 import SignUpForm from './components/authPages/SignUpForm';
+import SignInForm from './components/authPages/SignInForm';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         </a>
       </header>
       <SignUpForm />
+      <SignInForm />
     </div>
   );
 }
