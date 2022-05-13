@@ -11,6 +11,7 @@ module.exports = {
       'cyan': '#11BBB5',
       'stone': '#252525',
     },
+    extend: {},
   },
   plugins: [],
 };
