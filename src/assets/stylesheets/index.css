@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  background-color: #b2dfff;
   margin: 0;
   font-family:
     -apple-system,
@@ -32,4 +33,17 @@ code {
 
 html {
   scroll-behavior: smooth;
+}
+
+.centralized {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.headline {
+  font-weight: bold;
+  font-family: monospace;
+  color: #304656;
 }
