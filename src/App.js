@@ -1,4 +1,3 @@
-import './App.css';
 import LandingView from './components/LandingView/LandingView';
 import SideNav from './components/SideNav/SideNav';
 
