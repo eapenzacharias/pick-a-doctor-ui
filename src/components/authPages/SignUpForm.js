@@ -1,66 +1,72 @@
+import { connect } from 'react-redux';
+import { registerUser } from '../../redux/users/redux-token-auth-config';
+
+function submitForm(e) {
+  e.preventDefault();
+  const { registerUser } = this.props;
+  const {
+    email,
+    firstName,
+    lastName,
+    password,
+    dateOfBirth,
+  } = this.state;
+  registerUser({
+    email, firstName, lastName, password, dateOfBirth,
+  })
+    .then(console.log('Signed IN'))
+    .catch('Error');
+}
+
 const SignUpForm = () => {
-  const name = 'Test';
+  const firstName = '';
+  const lastName = '';
+  const email = '';
+  const password = '';
+  const passwordConfirm = '';
+  const dateOfBirth = '';
   return (
-    <>
-      <form className="w-full max-w-lg">
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-first-name">
-              First Name
-              <input className="appearance-none block w-full bg-gray-200 text-stone border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder={name} />
-            </label>
-            <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+    <div className="flex w-screen h-screen">
+      <div className="container justify-center px-6 m-auto ">
+        <h1 className="headline text-3xl text-center mb-12">sign up.</h1>
+        <form className="w-full max-w-sm mx-auto" onSubmit={submitForm}>
+          <div className="md:flex md:items-center mb-6">
+            <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-1">
+              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="text" value={firstName} placeholder="first name" />
+            </div>
+            <div className="w-full md:w-1/2 pl-1">
+              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="text" value={lastName} placeholder="last name" />
+            </div>
           </div>
-          <div className="w-full md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-last-name">
-              Last Name
-              <input className="appearance-none block w-full bg-gray-200 text-stone border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
-
-            </label>
+          <div className="md:flex md:items-center mb-6">
+            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="email" value={email} placeholder="your email" />
           </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-password">
-              Password
-              <input className="appearance-none block w-full bg-gray-200 text-stone border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************" />
-            </label>
-            <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you&apos;d like</p>
+          <div className="md:flex md:items-center mb-6">
+            <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-1">
+              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="password" value={password} placeholder="password" />
+            </div>
+            <div className="w-full md:w-1/2 pl-1">
+              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="password" value={passwordConfirm} placeholder="confirm password" />
+            </div>
           </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-city">
-              City
-              <input className="appearance-none block w-full bg-gray-200 text-stone border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque" />
-            </label>
+          <div className="md:flex md:items-center mb-6">
+            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" type="date" value={dateOfBirth} placeholder="your date of birth" />
           </div>
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-state">
-              State
-              <div className="relative">
-                <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-stone py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                  <option>New Mexico</option>
-                  <option>Missouri</option>
-                  <option>Texas</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-stone">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                </div>
-              </div>
-            </label>
-
+          <div className="md:flex md:items-center">
+            <div className="md:w-1/3" />
+            <div className="md:w-2/3">
+              <button className="shadow bg-darkblue text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                Sign Up
+              </button>
+            </div>
           </div>
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-stone text-xs font-bold mb-2" htmlFor="grid-zip">
-              Zip
-              <input className="appearance-none block w-full bg-gray-200 text-stone border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210" />
-            </label>
-          </div>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default SignUpForm;
+export default connect(
+  null,
+  { registerUser },
+)(SignUpForm);
