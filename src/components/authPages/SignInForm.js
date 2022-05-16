@@ -24,10 +24,10 @@ const SignInForm = () => {
         <h1 className="headline text-3xl text-center mb-12">sign in.</h1>
         <form className="w-full max-w-sm mx-auto" onSubmit={submitForm}>
           <div className="md:flex md:items-center mb-6">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" id="inline-full-name" type="text" value={name} placeholder="your email!" />
+            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" id="inline-full-name" type="text" value={name} placeholder="your email!" />
           </div>
           <div className="md:flex md:items-center mb-6">
-            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" id="inline-password" type="password" value={password} placeholder="your password!" />
+            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue" id="inline-password" type="password" value={password} placeholder="your password!" />
           </div>
           <div className="md:flex md:items-center">
             <div className="md:w-1/3" />
