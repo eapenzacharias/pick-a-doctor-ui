@@ -47,7 +47,6 @@ export const signOut = (user) => async (dispatch) => {
   const { headers } = user;
   axios.delete(`${url}sign_out`, { headers })
     .then(() => {
-      console.log(defaultState);
       dispatch({
         type: SIGN_OUT,
         payload: defaultState,
