@@ -19,7 +19,9 @@ const SideNav = () => {
     <>
       <div
         id="mySidenav"
-        className={`${styles.SideNav} ${sideNav === 'open' ? styles.sideNavFullWidth : styles.sideNavNoneWidth}`}
+        className={`${styles.SideNav} ${
+          sideNav === 'open' ? styles.sideNavFullWidth : styles.sideNavNoneWidth
+        }`}
       >
         <button
           className={`right-9 top-9 ${styles.closeBtn}`}
@@ -32,7 +34,9 @@ const SideNav = () => {
       <button
         type="button"
         onClick={() => openNav()}
-        className={`fixed left-9 top-9 ${sideNav === 'close' ? 'inline-block' : 'hidden'}`}
+        className={`fixed left-9 top-9 ${
+          sideNav === 'close' ? 'inline-block' : 'hidden'
+        }`}
       >
         <MenuIcon className="h-10 w-10 text-white" />
       </button>
