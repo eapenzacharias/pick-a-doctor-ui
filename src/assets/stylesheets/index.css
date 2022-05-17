@@ -35,7 +35,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   width: 100%;
 }
