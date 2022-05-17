@@ -28,7 +28,7 @@ export const signUp = (user) => async (dispatch) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  axios.post(`${url}sign_in`, user, { headers })
+  axios.post(url, user, { headers })
     .then((response) => {
       initialState.currentUser.isSignedIn = true;
       initialState.currentUser.attributes = response.data.data;
