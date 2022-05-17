@@ -1,8 +1,9 @@
 import axios from 'axios';
-import initialState from '../initialState';
+import { defaultState, initialState } from '../initialState';
 
 const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
+const SIGN_OUT = 'auth/signout';
 
 const url = 'https://pick-a-doc.herokuapp.com/api/auth/';
 
@@ -30,7 +31,7 @@ export const signUp = (user) => async (dispatch) => {
   };
   axios.post(url, user, { headers })
     .then((response) => {
-      initialState.currentUser.isSignedIn = true;
+      initialState.currentUser.isSignedIn = false;
       initialState.currentUser.attributes = response.data.data;
       initialState.currentUser.headers = response.headers;
     })
@@ -42,11 +43,25 @@ export const signUp = (user) => async (dispatch) => {
     });
 };
 
+export const signOut = (user) => async (dispatch) => {
+  const { headers } = user;
+  axios.delete(`${url}sign_out`, { headers })
+    .then(() => {
+      console.log(defaultState);
+      dispatch({
+        type: SIGN_OUT,
+        payload: defaultState,
+      });
+    });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN:
       return action.payload;
     case SIGN_UP:
+      return action.payload;
+    case SIGN_OUT:
       return action.payload;
     default:
       return state;
