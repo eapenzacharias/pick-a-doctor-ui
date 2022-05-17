@@ -19,7 +19,7 @@ const SignInForm = () => {
   const name = '';
   const password = '';
   return (
-    <div className="flex w-screen h-screen">
+    <div className="flex w-screen h-screen bg-background">
       <div className="container justify-center px-6 m-auto ">
         <h1 className="headline text-3xl text-center mb-12">sign in.</h1>
         <form className="w-full max-w-sm mx-auto" onSubmit={submitForm}>
