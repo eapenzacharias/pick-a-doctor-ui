@@ -1,17 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-// import { reduxTokenAuthReducer } from 'redux-token-auth';
+import logger from 'redux-logger';
+import { combineReducers } from 'redux';
 import usersReducer from './users/users';
+
+import specializationsReducer from './specializations/specializations';
 
 const rootReducer = combineReducers({
   usersReducer,
+  specializations: specializationsReducer,
 });
 
 export const store = configureStore({
-  middleware: [thunk, logger],
   reducer: rootReducer,
+  middleware: [thunk, logger],
 });
 
 export default store;
