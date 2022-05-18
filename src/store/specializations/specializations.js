@@ -9,6 +9,9 @@ const FAILURE = 'pick-a-doctor/specializations/FAILURE';
 // initial state
 const initialState = [];
 
+// url base
+const url = 'https://pick-a-doc.herokuapp.com/api/specializations';
+
 // Reducer
 export default function specializationsReducer(state = initialState, action) {
   switch (action.type) {
@@ -43,17 +46,16 @@ export function FailureSpecializations(payload) {
 }
 
 // side effects, only as applicable
-export function GetSpecializations() {
+export function GetSpecializations(user) {
+  const { headers } = user;
   return (dispatch) => {
     dispatch(LoadSpecializations());
     axios
-      .get('http://127.0.0.1:3002/api/specializations')
+      .get(url, { headers })
       .then((response) => {
-        console.log('Hereeeee baby', response.data);
         dispatch(SuccessSpecializations(response.data));
       })
       .catch((error) => {
-        console.log('Noooo baby', error);
         dispatch(FailureSpecializations(error.message));
       });
   };

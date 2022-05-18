@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './SideNav.module.css';
+import { signOut } from '../../store/users/users';
 
 const SideNav = () => {
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
   const [sideNav, setSideNav] = useState('close');
 
   useEffect(() => {}, [sideNav]);
@@ -14,6 +19,11 @@ const SideNav = () => {
 
   const closeNav = () => {
     setSideNav('close');
+  };
+
+  const userSignOut = (evt) => {
+    evt.preventDefault();
+    dispatch(signOut(currentUser));
   };
 
   return (
@@ -37,7 +47,10 @@ const SideNav = () => {
           </h4>
           <ul>
             <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              SPECIALIZATIONS
+              <Link to="/specializations">SPECIALIZATIONS</Link>
+            </li>
+            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+              <button type="button" onClick={userSignOut} className="font-bold">SIGN OUT</button>
             </li>
           </ul>
         </div>
