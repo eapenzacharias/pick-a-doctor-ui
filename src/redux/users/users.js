@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { defaultState, initialState } from '../initialState';
+import initialState from '../initialState';
 
 const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
@@ -8,38 +8,48 @@ const SIGN_OUT = 'auth/signout';
 const url = 'https://pick-a-doc.herokuapp.com/api/auth/';
 
 export const signIn = (user) => async (dispatch) => {
+  const currentState = JSON.parse(JSON.stringify(initialState));
   const headers = {
     'Content-Type': 'application/json',
   };
   axios.post(`${url}sign_in`, user, { headers })
     .then((response) => {
-      initialState.currentUser.isSignedIn = true;
-      initialState.currentUser.attributes = response.data.data;
-      initialState.currentUser.headers = response.headers;
+      currentState.currentUser.isSignedIn = true;
+      currentState.currentUser.attributes = response.data.data;
+      currentState.currentUser.headers = response.headers;
     })
     .then(() => {
       dispatch({
         type: SIGN_IN,
-        payload: initialState,
+        payload: currentState,
       });
+    })
+    .catch((error) => {
+      this.setState({ errorMessage: error.message });
+      console.error('There was an error!', error);
     });
 };
 
 export const signUp = (user) => async (dispatch) => {
+  const currentState = JSON.parse(JSON.stringify(initialState));
   const headers = {
     'Content-Type': 'application/json',
   };
   axios.post(url, user, { headers })
     .then((response) => {
-      initialState.currentUser.isSignedIn = false;
-      initialState.currentUser.attributes = response.data.data;
-      initialState.currentUser.headers = response.headers;
+      currentState.currentUser.isSignedIn = false;
+      currentState.currentUser.attributes = response.data.data;
+      currentState.currentUser.headers = response.headers;
     })
     .then(() => {
       dispatch({
         type: SIGN_UP,
-        payload: initialState,
+        payload: currentState,
       });
+    })
+    .catch((error) => {
+      this.setState({ errorMessage: error.message });
+      console.error('There was an error!', error);
     });
 };
 
@@ -49,8 +59,12 @@ export const signOut = (user) => async (dispatch) => {
     .then(() => {
       dispatch({
         type: SIGN_OUT,
-        payload: defaultState,
+        payload: initialState,
       });
+    })
+    .catch((error) => {
+      this.setState({ errorMessage: error.message });
+      console.error('There was an error!', error);
     });
 };
 
