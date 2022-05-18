@@ -2,3 +2,25 @@
     min-width: 100vw;
     min-height: 100vh;
 }
+
+.oddBlock::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-color: #d7a3ee;
+    position: absolute;
+    transform: rotate(45deg);
+    top: -10px;
+}
+
+.evenBlock::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-color: #b2dfff;
+    position: absolute;
+    transform: rotate(45deg);
+    bottom: -10px;
+}
