@@ -1,15 +1,19 @@
 const initialState = {
-  reduxTokenAuth: {
-    currentUser: {
-      isLoading: false,
-      isSignedIn: false,
-      attributes: {
-        firstName: null,
-        lastName: null,
-        dateOfBirth: null,
-        profileImage: null,
-        uid: null,
-      },
+  currentUser: {
+    isSignedIn: false,
+    attributes: {
+      firstName: null,
+      lastName: null,
+      dateOfBirth: null,
+      profileImage: null,
+      uid: null,
+    },
+    headers: {
+      'access-token': null,
+      'token-type': 'Bearer',
+      client: null,
+      expiry: null,
+      uid: null,
     },
   },
 };

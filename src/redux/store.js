@@ -2,10 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { reduxTokenAuthReducer } from 'redux-token-auth';
+// import { reduxTokenAuthReducer } from 'redux-token-auth';
+import usersReducer from './users/users';
 
 const rootReducer = combineReducers({
-  reduxTokenAuth: reduxTokenAuthReducer,
+  usersReducer,
 });
 
 export const store = configureStore({
