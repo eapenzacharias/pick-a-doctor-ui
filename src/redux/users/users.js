@@ -17,15 +17,12 @@ export const signIn = (user) => async (dispatch) => {
       currentState.currentUser.isSignedIn = true;
       currentState.currentUser.attributes = response.data.data;
       currentState.currentUser.headers = response.headers;
-    })
-    .then(() => {
       dispatch({
         type: SIGN_IN,
         payload: currentState,
       });
     })
     .catch((error) => {
-      this.setState({ errorMessage: error.message });
       console.error('There was an error!', error);
     });
 };
@@ -40,15 +37,12 @@ export const signUp = (user) => async (dispatch) => {
       currentState.currentUser.isSignedIn = false;
       currentState.currentUser.attributes = response.data.data;
       currentState.currentUser.headers = response.headers;
-    })
-    .then(() => {
       dispatch({
         type: SIGN_UP,
         payload: currentState,
       });
     })
     .catch((error) => {
-      this.setState({ errorMessage: error.message });
       console.error('There was an error!', error);
     });
 };
@@ -63,7 +57,6 @@ export const signOut = (user) => async (dispatch) => {
       });
     })
     .catch((error) => {
-      this.setState({ errorMessage: error.message });
       console.error('There was an error!', error);
     });
 };
