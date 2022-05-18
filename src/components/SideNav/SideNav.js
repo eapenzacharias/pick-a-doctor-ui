@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './SideNav.module.css';
-import { store } from '../../redux/store';
 import { signOut } from '../../redux/users/users';
 
 const SideNav = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
   const [sideNav, setSideNav] = useState('close');
 
   useEffect(() => { }, [sideNav]);
@@ -21,8 +21,7 @@ const SideNav = () => {
 
   const userSignOut = (evt) => {
     evt.preventDefault();
-    const data = store.getState();
-    dispatch(signOut(data.usersReducer.currentUser));
+    dispatch(signOut(currentUser));
   };
 
   return (
