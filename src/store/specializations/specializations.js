@@ -6,7 +6,7 @@ const LOAD = 'pick-a-doctor/specializations/LOAD';
 const SUCCESS = 'pick-a-doctor/specializations/SUCCESS';
 const FAILURE = 'pick-a-doctor/specializations/FAILURE';
 
-// initial state
+// Initial state
 const initialState = [];
 
 // url base
