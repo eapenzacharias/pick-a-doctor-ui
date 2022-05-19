@@ -23,7 +23,9 @@ const Appointments = () => {
         (appointment) => new Date(appointment.date) < today,
       );
       setUpComingAppointments(upComing);
-      setUpPastAppointments(past.sort((a, b) => new Date(b.date) - new Date(a.date)));
+      setUpPastAppointments(
+        past.sort((a, b) => new Date(b.date) - new Date(a.date)),
+      );
     }
   };
 

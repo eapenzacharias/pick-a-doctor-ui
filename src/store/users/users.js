@@ -12,7 +12,8 @@ export const signIn = (user) => async (dispatch) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  axios.post(`${url}sign_in`, user, { headers })
+  axios
+    .post(`${url}sign_in`, user, { headers })
     .then((response) => {
       currentState.currentUser.isSignedIn = true;
       currentState.currentUser.attributes = response.data.data;
@@ -32,7 +33,8 @@ export const signUp = (user) => async (dispatch) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  axios.post(url, user, { headers })
+  axios
+    .post(url, user, { headers })
     .then((response) => {
       currentState.currentUser.isSignedIn = false;
       currentState.currentUser.attributes = response.data.data;
@@ -49,7 +51,8 @@ export const signUp = (user) => async (dispatch) => {
 
 export const signOut = (user) => async (dispatch) => {
   const { headers } = user;
-  axios.delete(`${url}sign_out`, { headers })
+  axios
+    .delete(`${url}sign_out`, { headers })
     .then(() => {
       dispatch({
         type: SIGN_OUT,
