@@ -34,14 +34,14 @@ const SideNav = () => {
         </button>
         <div className={sideNav === 'close' ? 'hidden' : 'block'}>
           <h4 className="mt-14 mb-36 ml-4 font-sans text-xl font-bold text-dark_main_color whitespace-nowrap">
-            PICK A DOCTOR
+            <Link to="/">PICK A DOCTOR</Link>
           </h4>
           <ul>
             <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
               <Link to="/specializations">SPECIALIZATIONS</Link>
             </li>
             <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/doctors"><button type="button">Doctors</button></Link>
+              <Link to="/doctors">DOCTORS</Link>
             </li>
             <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
               <Link to="/appointments">APPOINTMENTS</Link>
