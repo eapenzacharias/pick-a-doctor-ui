@@ -3,7 +3,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './SideNav.module.css';
-import { signOut } from '../../redux/users/users';
+import { signOut } from '../../store/users/users';
 
 const SideNav = () => {
   const dispatch = useDispatch();

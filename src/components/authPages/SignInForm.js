@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { signIn } from '../../redux/users/users';
+import { signIn } from '../../store/users/users';
 
 const SignInForm = () => {
   const dispatch = useDispatch();

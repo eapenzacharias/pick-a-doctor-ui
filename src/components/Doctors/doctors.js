@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getDoctors } from '../../redux/doctors/doctors';
+import { getDoctors } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
 
 const Doctors = ({ specId }) => {
   const dispatch = useDispatch();
   const doctors = useSelector((state) => state.doctorReducer);
-  // const specialization = useSelector((state) => state.dotorsReducer.specialization);
-  console.log(doctors);
-  // console.log(specialization);
-
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
-  // const [specId] = props;
   useEffect(() => {
     dispatch(getDoctors(currentUser, specId));
   }, []);
