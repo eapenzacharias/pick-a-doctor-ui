@@ -50,7 +50,9 @@ const SideNav = () => {
               <Link to="/specializations">SPECIALIZATIONS</Link>
             </li>
             <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <button type="button" onClick={userSignOut} className="font-bold">SIGN OUT</button>
+              <button type="button" onClick={userSignOut} className="font-bold">
+                SIGN OUT
+              </button>
             </li>
           </ul>
         </div>
