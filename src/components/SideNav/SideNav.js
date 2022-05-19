@@ -3,6 +3,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SideNav.module.css';
 import { signOut } from '../../redux/users/users';
+import { Link } from 'react-router-dom';
 
 const SideNav = () => {
   const dispatch = useDispatch();
@@ -28,9 +29,8 @@ const SideNav = () => {
     <>
       <div
         id="mySidenav"
-        className={`${styles.SideNav} ${
-          sideNav === 'open' ? styles.sideNavFullWidth : styles.sideNavNoneWidth
-        }`}
+        className={`${styles.SideNav} ${sideNav === 'open' ? styles.sideNavFullWidth : styles.sideNavNoneWidth
+          }`}
       >
         <button
           className={`right-9 top-9 ${styles.closeBtn}`}
@@ -41,13 +41,13 @@ const SideNav = () => {
         </button>
 
         <button type="button" onClick={userSignOut}>Sign Out</button>
+        <Link to="/doctors"><button type="button">Doctors</button></Link>
       </div>
       <button
         type="button"
         onClick={() => openNav()}
-        className={`fixed left-9 top-9 ${
-          sideNav === 'close' ? 'inline-block' : 'hidden'
-        }`}
+        className={`fixed left-9 top-9 ${sideNav === 'close' ? 'inline-block' : 'hidden'
+          }`}
       >
         <MenuIcon className="h-10 w-10 text-white" />
       </button>
