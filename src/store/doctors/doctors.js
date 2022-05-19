@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const GET_DOCTORS = 'doctors';
+const GET_A_DOCTOR = 'doctor';
 
 const url = 'https://pick-a-doc.herokuapp.com/api/';
 
@@ -21,9 +22,28 @@ export const getDoctors = (user, specializationID) => async (dispatch) => {
     });
 };
 
+export const getADoctor = (user, docID) => async (dispatch) => {
+  const currentState = {};
+  const { headers } = user;
+  axios.get(`${url}doctors/${docID}`, user, { headers })
+    .then((response) => {
+      console.log(response);
+      currentState.doctor = response.data.data;
+      dispatch({
+        type: GET_A_DOCTOR,
+        payload: currentState,
+      });
+    })
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+};
+
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case GET_DOCTORS:
+      return action.payload;
+    case GET_A_DOCTOR:
       return action.payload;
     default:
       return state;
