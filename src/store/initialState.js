@@ -2,6 +2,7 @@ const initialState = {
   currentUser: {
     isSignedIn: false,
     attributes: {
+      id: null,
       firstName: null,
       lastName: null,
       dateOfBirth: null,
