@@ -1,16 +1,16 @@
 import axios from 'axios';
-import initialState from '../initialState';
 
 const GET_DOCTORS = 'doctors';
 
 const url = 'https://pick-a-doc.herokuapp.com/api/';
 
 export const getDoctors = (user, specializationID) => async (dispatch) => {
-  let currentState = [];
+  const currentState = {};
   const { headers } = user;
   axios.get(`${url}specializations/${specializationID}`, user, { headers })
     .then((response) => {
-      currentState = response.data;
+      currentState.specialization = response.data.data.name;
+      currentState.doctors = response.data.doctors;
       dispatch({
         type: GET_DOCTORS,
         payload: currentState,
@@ -21,7 +21,7 @@ export const getDoctors = (user, specializationID) => async (dispatch) => {
     });
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case GET_DOCTORS:
       return action.payload;
