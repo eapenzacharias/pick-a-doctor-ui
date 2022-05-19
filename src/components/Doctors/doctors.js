@@ -1,21 +1,57 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getDoctors } from '../../redux/doctors/doctors';
+import styles from './doctors.module.css';
 
-const Doctors = (props) => {
+const Doctors = ({ specId }) => {
   const dispatch = useDispatch();
-  const doctors = useSelector((state) => state.doctors);
-  const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  const doctors = useSelector((state) => state.doctorReducer);
+  // const specialization = useSelector((state) => state.dotorsReducer.specialization);
+  console.log(doctors);
+  // console.log(specialization);
 
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  // const [specId] = props;
   useEffect(() => {
-    dispatch(getDoctors(currentUser, props.specId));
+    dispatch(getDoctors(currentUser, specId));
   }, []);
-  // className="bg-grey flex items-center justify-center"
+  //
   return (
-    <div>
-      hello
+    <div className="flex w-screen h-screen bg-grey items-center">
+      <div className="container justify-center px-6 m-auto items-center">
+        <h1 className="headline text-3xl text-center mb-12">{doctors.specialization}</h1>
+        {Array.isArray(doctors.doctors) && doctors.doctors.length !== 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            {doctors.doctors.map((doc) => (
+              <div key={doc.id} className="grid grid-cols">
+                <div className="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
+                  <div className="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
+                    <img src={doc.profile_image ? doc.profile_image : '../../assets/images/avtar.jpeg'} alt={doc.first_name} className="h-full w-full" />
+                  </div>
+                  <h2 className="mt-4 font-bold text-xl">{`${doc.first_name} ${doc.last_name}`}</h2>
+                  <h6 className="mt-2 text-sm font-medium">{doctors.specialization}</h6>
+                  <button type="button" className="text-white bg-gradient-to-b from-cyan-700 to-darkblue mt-2 py-1 px-3 rounded focus:outline-none focus:shadow-outline">Get Appointment</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className={`${styles.loadWrap} items-center mx-auto`}>
+            <div className={styles.load}>
+              <div className={styles.line} />
+              <div className={styles.line} />
+              <div className={styles.line} />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
+};
+
+Doctors.propTypes = {
+  specId: PropTypes.string.isRequired,
 };
 
 export default Doctors;
