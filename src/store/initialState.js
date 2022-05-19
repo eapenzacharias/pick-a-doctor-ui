@@ -3,6 +3,7 @@ const initialState = {
     isSignedIn: false,
     attributes: {
       id: null,
+      email: null,
       firstName: null,
       lastName: null,
       dateOfBirth: null,

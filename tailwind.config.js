@@ -9,6 +9,7 @@ module.exports = {
         light_main_color: '#b2dfff',
         light_purple_color: '#d7a3ee',
         grey: '#dedede',
+        white_card: '#ffffffe0;',
       },
     },
   },

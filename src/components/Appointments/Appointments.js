@@ -56,13 +56,13 @@ const Appointments = () => {
             <div>
               {upComingAppointments !== 0 && (
                 <div>
-                  <h2 className="font-medium text-center text-3xl mb-5 text-dark_main_color uppercase">
-                    The Upcoming Appointments
+                  <h2 className="font-medium text-center text-3xl mb-5 text-dark_main_color headline">
+                    The upcoming appointments.
                   </h2>
                   {upComingAppointments.map((upComingAppointment) => (
                     <div
                       key={upComingAppointment.id}
-                      className="bg-white border shadow-x1 drop-shadow-md p-6 py-5 mb-5"
+                      className="bg-white_card border shadow-x1 drop-shadow-md p-6 py-5 mb-5"
                     >
                       <div className="items-center">
                         <p className="font-semibold text-lg text-gray-400">
@@ -97,13 +97,13 @@ const Appointments = () => {
             <div>
               {pastAppointments !== 0 && (
                 <div>
-                  <h2 className="font-medium text-center text-3xl mb-5 text-dark_main_color uppercase mt-8">
-                    The Past Appointments
+                  <h2 className="font-medium text-center text-3xl mb-5 text-dark_main_color headline mt-8">
+                    The past appointments.
                   </h2>
                   {pastAppointments.map((pastAppointment) => (
                     <div
                       key={pastAppointment.id}
-                      className="bg-white border shadow-x1 drop-shadow-md p-6 py-5 mb-5"
+                      className="bg-white_card border shadow-x1 drop-shadow-md p-6 py-5 mb-5"
                     >
                       <div className="items-center">
                         <p className="font-semibold text-lg text-gray-400">
