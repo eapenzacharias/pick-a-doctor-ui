@@ -5,24 +5,45 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { getADoctor } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
+import { signUp } from '../../store/users/users';
 
 const GetDoctor = () => {
   const dispatch = useDispatch();
   const doctor = useSelector((state) => state.doctorReducer);
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  const [state, setState] = React.useState({
+    doctor_id: doctor.doctor.id,
+    user_id: currentUser.attributes.id,
+    date: '',
+    time: '',
+    notes: '',
+  });
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    dispatch(signUp(state));
+  };
   const { docID } = useParams();
   useEffect(() => {
     dispatch(getADoctor(currentUser, docID));
   }, []);
-  //
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    const { value } = evt.target;
+    setState({
+      ...state,
+      [evt.target.name]: value,
+    });
+  };
+
   return (
     <div className="flex w-screen h-screen bg-grey items-center">
-      <div className="container justify-center px-6 pt-44 m-auto items-center">
+      <div className="container justify-center px-6 pt-24 m-auto items-center">
         {typeof doctor.doctor !== 'undefined' ? (
           <>
 
             <div className="container mx-auto px-4">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
                 <div className="px-6">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-4/12 px-4 lg:order-2 flex justify-center">
@@ -42,10 +63,10 @@ const GetDoctor = () => {
                     </div>
                   </div>
                   <div className="text-center mt-12">
-                    <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700">
+                    <h3 className="font-semibold leading-normal mb-2 headline text-4xl text-center">
                       {`${doctor.doctor.first_name} ${doctor.doctor.last_name}`}
                     </h3>
-                    <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+                    <div className="text-sm leading-normal mt-0 mb-2 text-darkblue font-bold uppercase">
                       {doctor.doctor.specialization}
                     </div>
 
@@ -70,9 +91,26 @@ const GetDoctor = () => {
                   <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <div className="flex flex-wrap justify-center">
                       <div className="w-full lg:w-9/12 px-4">
-                        <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                          Appointment Form
-                        </p>
+                        <h1 className="headline text-3xl text-center mb-12">book your appointment.</h1>
+                        <form className="w-full max-w-sm mx-auto" onSubmit={submitForm}>
+                          <div className="md:flex md:items-center mb-6">
+                            <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-1">
+                              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="date" name="date" value={state.password} onChange={handleChange} placeholder="date" required />
+                            </div>
+                            <div className="w-full md:w-1/2 pl-1">
+                              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="time" name="time" value={state.passwordConfirm} onChange={handleChange} placeholder="time" required />
+                            </div>
+                          </div>
+                          <div className="md:flex md:items-center mb-6">
+                            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="text" name="date_of_birth" value={state.date_of_birth} onChange={handleChange} placeholder="notes" required />
+                          </div>
+                          <div className="md:flex md:items-center">
+                            <button className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                              Book Now
+                            </button>
+
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -94,9 +132,5 @@ const GetDoctor = () => {
     </div>
   );
 };
-
-// GetDoctor.propTypes = {
-//   docID: PropTypes.string.isRequired,
-// };
 
 export default GetDoctor;
