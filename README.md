@@ -8,7 +8,8 @@
 ![image](https://user-images.githubusercontent.com/49812651/169590975-ddc7eb79-5b46-49ce-a21d-84afad9649a8.png)
 
 
-Front-end for [Pick-A-Doctor](https://github.com/Maha-Magdy/pick-a-doctor)
+Front-end for [Pick-A-Doctor](https://github.com/Maha-Magdy/pick-a-doctor).
+
 Pick a doctor is a website helping you find doctors that belong to a specific specialization in no time and allows you to book appointments with them easily.
 
 ### Live Project
