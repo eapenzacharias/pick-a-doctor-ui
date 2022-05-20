@@ -4,8 +4,6 @@ import SideNav from './components/SideNav/SideNav';
 import SignInForm from './components/authPages/SignInForm';
 import SignUpForm from './components/authPages/SignUpForm';
 import './App.css';
-import GetDoctor from './components/Doctors/doctor';
-import AllDoctors from './components/Doctors/allDoctors';
 
 function App() {
   return (
