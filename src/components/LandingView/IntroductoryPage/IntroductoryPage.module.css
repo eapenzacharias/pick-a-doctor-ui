@@ -1,0 +1,15 @@
+.IntroductoryPage {
+  background-color: #b2dfff;
+  height: 100vh;
+}
+
+.headline {
+  font-weight: bold;
+  font-family: monospace;
+  color: #304656;
+}
+
+.btn {
+  background-color: #304656;
+  color: white;
+}
