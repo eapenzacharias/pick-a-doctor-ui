@@ -7,6 +7,7 @@ import SignUpForm from './components/authPages/SignUpForm';
 import Specializations from './components/Specialization/Specialization';
 import Appointments from './components/Appointments/Appointments';
 import './App.css';
+import GetDoctor from './components/Doctors/doctor';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="doctors" element={<Doctors specId="1" />} />
         <Route path="specializations" element={<Specializations />} />
         <Route path="appointments" element={<Appointments />} />
+        <Route path="doctors/:docID" element={<GetDoctor />} />
       </Routes>
     </>
   );

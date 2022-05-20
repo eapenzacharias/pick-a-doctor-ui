@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getDoctors } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
 
@@ -26,7 +27,9 @@ const Doctors = ({ specId }) => {
                   </div>
                   <h2 className="mt-4 font-bold text-xl">{`${doc.first_name} ${doc.last_name}`}</h2>
                   <h6 className="mt-2 text-sm font-medium">{doctors.specialization}</h6>
-                  <button type="button" className="text-white bg-gradient-to-b from-cyan-700 to-darkblue mt-2 py-1 px-3 rounded focus:outline-none focus:shadow-outline">Get Appointment</button>
+                  <Link to={`${doc.id}`}>
+                    <button type="button" className="text-white bg-gradient-to-b from-cyan-700 to-darkblue mt-2 py-1 px-3 rounded focus:outline-none focus:shadow-outline">Get Appointment</button>
+                  </Link>
                 </div>
               </div>
             ))}
