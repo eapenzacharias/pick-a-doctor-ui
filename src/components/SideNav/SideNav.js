@@ -105,7 +105,7 @@ const SideNav = () => {
           sideNav === 'close' ? 'inline-block' : 'hidden'
         }`}
       >
-        <MenuIcon className="h-10 w-10 text-white" />
+        <MenuIcon className="h-10 w-10 text-dark_main_color" />
       </button>
     </>
   );
