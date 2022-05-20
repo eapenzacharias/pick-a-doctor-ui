@@ -1,5 +1,5 @@
 
-# CryptoList
+# Pick A Doctor
 
 > Find and book appointments with doctors
 
