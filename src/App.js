@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<LandingView />} />
         <Route path="signin" element={<SignInForm />} />
         <Route path="signup" element={<SignUpForm />} />
-        <Route path="doctors" element={<Doctors specId="1" />} />
+        <Route path="specializations/:specId" element={<Doctors />} />
         <Route path="specializations" element={<Specializations />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="doctors/:docID" element={<GetDoctor />} />
