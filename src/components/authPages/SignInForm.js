@@ -1,13 +1,25 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../store/users/users';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [state, setState] = React.useState({
     email: '',
     password: '',
   });
+
+  const isSignedIn = useSelector(
+    (state) => state.usersReducer.currentUser.isSignedIn,
+  );
+
+  useEffect(() => {
+    isSignedIn ? navigate('/specializations') : null;
+  }, [isSignedIn]);
 
   const handleChange = (evt) => {
     evt.preventDefault();

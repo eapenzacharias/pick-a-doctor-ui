@@ -30,7 +30,6 @@ const Profile = () => {
 
   function updateProfile(e) {
     e.preventDefault();
-    console.log(state);
     dispatch(accountUpdate(state, headers));
   }
 
