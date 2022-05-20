@@ -39,6 +39,7 @@ export const signUp = (user) => async (dispatch) => {
     .post(url, user, { headers })
     .then((response) => {
       currentState.currentUser.isSignedIn = false;
+      currentState.currentUser.isSignedUp = true;
       currentState.currentUser.attributes = response.data.data;
       currentState.currentUser.headers = response.headers;
       dispatch({
