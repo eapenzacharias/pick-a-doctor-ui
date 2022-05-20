@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { getDoctors } from '../../store/doctors/doctors';
+import { Link } from 'react-router-dom';
+import { getAllDoctors } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
 
-const Doctors = () => {
+const AllDoctors = () => {
   const dispatch = useDispatch();
   const doctors = useSelector((state) => state.doctorReducer);
-  const { specId } = useParams();
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
   useEffect(() => {
-    dispatch(getDoctors(currentUser, specId));
+    dispatch(getAllDoctors(currentUser));
   }, []);
   //
   return (
@@ -48,4 +47,4 @@ const Doctors = () => {
   );
 };
 
-export default Doctors;
+export default AllDoctors;
