@@ -28,7 +28,6 @@ export const getAllDoctors = (user) => async (dispatch) => {
   const { headers } = user;
   axios.get(`${url}doctors`, user, { headers })
     .then((response) => {
-      console.log(response);
       currentState.doctors = response.data.data;
       dispatch({
         type: GET_ALL_DOCTORS,
@@ -45,7 +44,6 @@ export const getADoctor = (user, docID) => async (dispatch) => {
   const { headers } = user;
   axios.get(`${url}doctors/${docID}`, user, { headers })
     .then((response) => {
-      console.log(response);
       currentState.doctor = response.data.data;
       dispatch({
         type: GET_A_DOCTOR,

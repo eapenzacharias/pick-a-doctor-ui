@@ -29,8 +29,6 @@ const GetDoctor = () => {
       date: `${state.date} ${state.time}`,
       notes: state.notes,
     };
-    console.log(appointment);
-    console.log(currentUser.headers);
     axios
       .post(`${url}appointments`, appointment, { headers })
       .then(() => {
