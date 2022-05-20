@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getADoctor } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
@@ -11,8 +9,10 @@ const url = 'https://pick-a-doc.herokuapp.com/api/';
 
 const GetDoctor = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const doctor = useSelector((state) => state.doctorReducer);
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  const { headers } = currentUser;
   const [state, setState] = React.useState({
     doctor_id: '',
     user_id: '',
@@ -20,17 +20,7 @@ const GetDoctor = () => {
     time: '',
     notes: '',
   });
-  // const submitForm = (evt) => {
-  //   evt.preventDefault();
-  //   const appointment = {
-  //     doctor_id: doctor.doctor.id,
-  //     user_id: currentUser.attributes.id,
-  //     date: `${state.date} ${state.time}`,
-  //     notes: state.notes,
-  //   };
-  //   console.log(appointment);
-  //   dispatch(bookAppointment(currentUser, appointment));
-  // };
+
   const submitForm = (evt) => {
     evt.preventDefault();
     const appointment = {
@@ -40,9 +30,10 @@ const GetDoctor = () => {
       notes: state.notes,
     };
     console.log(appointment);
-    axios.post(`${url}appointments`, state, currentUser.headers)
+    console.log(currentUser.headers);
+    axios.post(`${url}appointments`, appointment, { headers })
       .then(() => {
-        <Navigate to="appointments" replace />;
+        navigate('/appointments');
       })
       .catch((error) => {
         console.error('There was an error!', error);
@@ -74,21 +65,17 @@ const GetDoctor = () => {
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-4/12 px-4 lg:order-2 flex justify-center">
                       <div className="relative w-40 ">
-                        <img alt="..." src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -mx-0 lg:-ml-0 max-w-150-px" />
+                        <img alt={`${doctor.doctor.first_name} ${doctor.doctor.last_name}`} src={doctor.doctor.profile_image} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -mx-0 lg:-ml-0 max-w-150-px bg-white" />
                       </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right self-center">
-                      <div className="py-6 px-3 mt-32 sm:mt-0">
-                        <button className="bg-darkblue hover:bg-sky-900 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
-                          Book Appointment
-                        </button>
-                      </div>
+                      <div className="py-6 px-3 mt-32 sm:mt-0" />
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-1">
                       <div className="flex justify-center py-4 lg:pt-4 pt-8" />
                     </div>
                   </div>
-                  <div className="text-center mt-12">
+                  <div className="text-center mt-20">
                     <h3 className="font-semibold leading-normal mb-2 headline text-4xl text-center">
                       {`${doctor.doctor.first_name} ${doctor.doctor.last_name}`}
                     </h3>
@@ -130,7 +117,7 @@ const GetDoctor = () => {
                           <div className="md:flex md:items-center mb-6">
                             <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="text" name="notes" value={state.notes} onChange={handleChange} placeholder="notes" required />
                           </div>
-                          <div className="md:flex md:items-center">
+                          <div className="md:flex items-center justify-center">
                             <button className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                               Book Now
                             </button>

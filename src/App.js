@@ -8,6 +8,7 @@ import Specializations from './components/Specialization/Specialization';
 import Appointments from './components/Appointments/Appointments';
 import './App.css';
 import GetDoctor from './components/Doctors/doctor';
+import AllDoctors from './components/Doctors/allDoctors';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="specializations" element={<Specializations />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="doctors/:docID" element={<GetDoctor />} />
+        <Route path="doctors" element={<AllDoctors />} />
       </Routes>
     </>
   );
