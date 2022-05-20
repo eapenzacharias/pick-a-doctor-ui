@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pick-a-doctor-ui/static/css/main.190cd684.css",
-    "main.js": "/pick-a-doctor-ui/static/js/main.a8ed299c.js",
+    "main.js": "/pick-a-doctor-ui/static/js/main.536a50c0.js",
     "static/js/787.647f9288.chunk.js": "/pick-a-doctor-ui/static/js/787.647f9288.chunk.js",
     "static/media/lovepik_com-401907501-doctors.png": "/pick-a-doctor-ui/static/media/lovepik_com-401907501-doctors.dda5c9338ee781d4f705.png",
     "index.html": "/pick-a-doctor-ui/index.html",
     "main.190cd684.css.map": "/pick-a-doctor-ui/static/css/main.190cd684.css.map",
-    "main.a8ed299c.js.map": "/pick-a-doctor-ui/static/js/main.a8ed299c.js.map",
+    "main.536a50c0.js.map": "/pick-a-doctor-ui/static/js/main.536a50c0.js.map",
     "787.647f9288.chunk.js.map": "/pick-a-doctor-ui/static/js/787.647f9288.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.190cd684.css",
-    "static/js/main.a8ed299c.js"
+    "static/js/main.536a50c0.js"
   ]
 }
