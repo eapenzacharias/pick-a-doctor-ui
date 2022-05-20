@@ -4,6 +4,8 @@ import initialState from '../initialState';
 const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
 const SIGN_OUT = 'auth/signout';
+const ACCOUNT_IS_UPDATING = 'auth/account-is-updating';
+const ACCOUNT_UPDATE = 'auth/account-update';
 
 const url = 'https://pick-a-doc.herokuapp.com/api/auth/';
 
@@ -64,6 +66,27 @@ export const signOut = (user) => async (dispatch) => {
     });
 };
 
+export const accountUpdate = (userInfo, headers) => async (dispatch) => {
+  dispatch({
+    type: ACCOUNT_IS_UPDATING,
+  });
+  const currentState = JSON.parse(JSON.stringify(initialState));
+  axios
+    .put(`${url}`, userInfo, { headers })
+    .then((response) => {
+      currentState.currentUser.isSignedIn = true;
+      currentState.currentUser.attributes = response.data.data;
+      currentState.currentUser.headers = response.headers;
+      dispatch({
+        type: ACCOUNT_UPDATE,
+        payload: currentState,
+      });
+    })
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN:
@@ -71,6 +94,10 @@ const reducer = (state = initialState, action) => {
     case SIGN_UP:
       return action.payload;
     case SIGN_OUT:
+      return action.payload;
+    case ACCOUNT_IS_UPDATING:
+      return { ...state, isUpdating: true };
+    case ACCOUNT_UPDATE:
       return action.payload;
     default:
       return state;

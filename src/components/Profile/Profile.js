@@ -1,21 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { accountUpdate } from '../../store/users/users';
 // import styles from './Profile.module.css';
 
 const Profile = () => {
-  // const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [state, setState] = useState({});
-  const currentUser = useSelector((state) => state.usersReducer.currentUser.attributes);
+  const userInfo = useSelector(
+    (state) => state.usersReducer.currentUser.attributes,
+  );
+  const headers = useSelector(
+    (state) => state.usersReducer.currentUser.headers,
+  );
+  const isUpdating = useSelector(
+    (state) => state.usersReducer.currentUser.isUpdating,
+  );
 
   useEffect(() => {
-    setState(currentUser);
+    setState(userInfo);
   }, []);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    setState({
+      ...state,
+      [e.target.name]: value,
+    });
+  };
+
+  function updateProfile(e) {
+    e.preventDefault();
+    console.log(state);
+    dispatch(accountUpdate(state, headers));
+  }
 
   return (
     <div className="flex w-screen h-screen bg-light_main_color">
       <div className="container px-6 m-auto">
         <h1 className="headline text-3xl text-center mb-12">My profile.</h1>
-        <form className="w-full max-w-sm mx-auto">
+        <form className="w-full max-w-sm mx-auto" onSubmit={updateProfile}>
           <div className="md:flex md:items-center mb-6">
             <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-1">
               <label
@@ -30,6 +54,7 @@ const Profile = () => {
                   name="first_name"
                   placeholder="first name"
                   value={state.first_name}
+                  onChange={handleChange}
                   required
                 />
               </label>
@@ -47,6 +72,7 @@ const Profile = () => {
                   name="last_name"
                   placeholder="last name"
                   value={state.last_name}
+                  onChange={handleChange}
                   required
                 />
               </label>
@@ -64,7 +90,7 @@ const Profile = () => {
                 name="email"
                 placeholder="your email"
                 value={state.email}
-                required
+                disabled
               />
             </label>
           </div>
@@ -80,14 +106,16 @@ const Profile = () => {
                 name="date_of_birth"
                 placeholder="your date of birth"
                 value={state.date_of_birth}
+                onChange={handleChange}
                 required
               />
             </label>
           </div>
           <div className="md:flex md:items-center md:justify-center">
             <button
-              className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none disabled:grey text-white font-bold py-2 px-4 rounded"
               type="submit"
+              disabled={isUpdating}
             >
               Update profile
             </button>
