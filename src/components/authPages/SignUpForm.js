@@ -1,9 +1,13 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signUp } from '../../store/users/users';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [state, setState] = React.useState({
     first_name: '',
     last_name: '',
@@ -12,6 +16,14 @@ const SignUpForm = () => {
     passwordConfirm: '',
     date_of_birth: '',
   });
+
+  const isSignedUp = useSelector(
+    (state) => state.usersReducer.currentUser.isSignedUp,
+  );
+
+  useEffect(() => {
+    isSignedUp ? navigate('/signin') : null;
+  }, [isSignedUp]);
 
   const handleChange = (evt) => {
     evt.preventDefault();

@@ -1,8 +1,11 @@
 const initialState = {
   currentUser: {
     isSignedIn: false,
+    isUpdating: false,
+    isSignedUp: false,
     attributes: {
       id: null,
+      email: null,
       firstName: null,
       lastName: null,
       dateOfBirth: null,
