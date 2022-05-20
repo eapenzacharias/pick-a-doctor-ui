@@ -1,26 +1,52 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { getADoctor } from '../../store/doctors/doctors';
 import styles from './doctors.module.css';
-import { signUp } from '../../store/users/users';
+
+const url = 'https://pick-a-doc.herokuapp.com/api/';
 
 const GetDoctor = () => {
   const dispatch = useDispatch();
   const doctor = useSelector((state) => state.doctorReducer);
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
   const [state, setState] = React.useState({
-    doctor_id: doctor.doctor.id,
-    user_id: currentUser.attributes.id,
+    doctor_id: '',
+    user_id: '',
     date: '',
     time: '',
     notes: '',
   });
+  // const submitForm = (evt) => {
+  //   evt.preventDefault();
+  //   const appointment = {
+  //     doctor_id: doctor.doctor.id,
+  //     user_id: currentUser.attributes.id,
+  //     date: `${state.date} ${state.time}`,
+  //     notes: state.notes,
+  //   };
+  //   console.log(appointment);
+  //   dispatch(bookAppointment(currentUser, appointment));
+  // };
   const submitForm = (evt) => {
     evt.preventDefault();
-    dispatch(signUp(state));
+    const appointment = {
+      doctor_id: doctor.doctor.id,
+      user_id: currentUser.attributes.id,
+      date: `${state.date} ${state.time}`,
+      notes: state.notes,
+    };
+    console.log(appointment);
+    axios.post(`${url}appointments`, state, currentUser.headers)
+      .then(() => {
+        <Navigate to="appointments" replace />;
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
   };
   const { docID } = useParams();
   useEffect(() => {
@@ -102,7 +128,7 @@ const GetDoctor = () => {
                             </div>
                           </div>
                           <div className="md:flex md:items-center mb-6">
-                            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="text" name="date_of_birth" value={state.date_of_birth} onChange={handleChange} placeholder="notes" required />
+                            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="text" name="notes" value={state.notes} onChange={handleChange} placeholder="notes" required />
                           </div>
                           <div className="md:flex md:items-center">
                             <button className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">

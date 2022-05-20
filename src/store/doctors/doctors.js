@@ -1,7 +1,9 @@
 import axios from 'axios';
+// import { Navigate } from 'react-router-dom';
 
 const GET_DOCTORS = 'doctors';
 const GET_A_DOCTOR = 'doctor';
+// const BOOK_APPONTMENT = 'doctor/appointment';
 
 const url = 'https://pick-a-doc.herokuapp.com/api/';
 
@@ -38,6 +40,22 @@ export const getADoctor = (user, docID) => async (dispatch) => {
       console.error('There was an error!', error);
     });
 };
+
+// export const bookAppointment = (user, state) => async (dispatch) => {
+//   const { headers } = user;
+//   const currentState = { message: 'success' };
+//   axios.post(`${url}appointments`, state, { headers })
+//     .then(() => {
+//       dispatch({
+//         type: BOOK_APPONTMENT,
+//         payload: currentState,
+//       });
+//       return <Navigate to="appointments" replace />;
+//     })
+//     .catch((error) => {
+//       console.error('There was an error!', error);
+//     });
+// };
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
