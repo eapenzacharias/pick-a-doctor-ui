@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { accountUpdate } from '../../store/users/users';
-// import styles from './Profile.module.css';
 
 const Profile = () => {
   const dispatch = useDispatch();
