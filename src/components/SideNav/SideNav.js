@@ -49,47 +49,51 @@ const SideNav = () => {
           </h4>
           <ul>
             {!isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/signin">SIGN IN</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/signin">SIGN IN</Link>
+              </li>
             )}
 
             {!isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/signUP">SIGN UP</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/signUP">SIGN UP</Link>
+              </li>
             )}
 
             {isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/specializations">SPECIALIZATIONS</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/specializations">SPECIALIZATIONS</Link>
+              </li>
             )}
 
             {isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/doctors">ALL DOCTORS</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/doctors">ALL DOCTORS</Link>
+              </li>
             )}
 
             {isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/appointments">APPOINTMENTS</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/appointments">APPOINTMENTS</Link>
+              </li>
             )}
 
             {isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <Link to="/profile">PROFILE</Link>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <Link to="/profile">PROFILE</Link>
+              </li>
             )}
 
             {isSignedIn && (
-            <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
-              <button type="button" onClick={userSignOut} className="font-bold">
-                SIGN OUT
-              </button>
-            </li>
+              <li className="p-4 font-sans text-xl font-bold text-dark_main_color cursor-pointer hover:bg-light_main_color hover:text-white">
+                <button
+                  type="button"
+                  onClick={userSignOut}
+                  className="font-bold"
+                >
+                  SIGN OUT
+                </button>
+              </li>
             )}
           </ul>
         </div>

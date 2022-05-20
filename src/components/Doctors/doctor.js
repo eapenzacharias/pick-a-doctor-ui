@@ -31,7 +31,8 @@ const GetDoctor = () => {
     };
     console.log(appointment);
     console.log(currentUser.headers);
-    axios.post(`${url}appointments`, appointment, { headers })
+    axios
+      .post(`${url}appointments`, appointment, { headers })
       .then(() => {
         navigate('/appointments');
       })
@@ -58,14 +59,17 @@ const GetDoctor = () => {
       <div className="container justify-center px-6 pt-24 m-auto items-center">
         {typeof doctor.doctor !== 'undefined' ? (
           <>
-
             <div className="container mx-auto px-4">
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
                 <div className="px-6">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-4/12 px-4 lg:order-2 flex justify-center">
                       <div className="relative w-40 ">
-                        <img alt={`${doctor.doctor.first_name} ${doctor.doctor.last_name}`} src={doctor.doctor.profile_image} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -mx-0 lg:-ml-0 max-w-150-px bg-white" />
+                        <img
+                          alt={`${doctor.doctor.first_name} ${doctor.doctor.last_name}`}
+                          src={doctor.doctor.profile_image}
+                          className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -mx-0 lg:-ml-0 max-w-150-px bg-white"
+                        />
                       </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right self-center">
@@ -104,24 +108,55 @@ const GetDoctor = () => {
                   <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <div className="flex flex-wrap justify-center">
                       <div className="w-full lg:w-9/12 px-4">
-                        <h1 className="headline text-3xl text-center mb-12">book your appointment.</h1>
-                        <form className="w-full max-w-sm mx-auto" onSubmit={submitForm}>
+                        <h1 className="headline text-3xl text-center mb-12">
+                          book your appointment.
+                        </h1>
+                        <form
+                          className="w-full max-w-sm mx-auto"
+                          onSubmit={submitForm}
+                        >
                           <div className="md:flex md:items-center mb-6">
                             <div className="w-full md:w-1/2 mb-6 md:mb-0 pr-1">
-                              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="date" name="date" value={state.password} onChange={handleChange} placeholder="date" required />
+                              <input
+                                className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color"
+                                type="date"
+                                name="date"
+                                value={state.password}
+                                onChange={handleChange}
+                                placeholder="date"
+                                required
+                              />
                             </div>
                             <div className="w-full md:w-1/2 pl-1">
-                              <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="time" name="time" value={state.passwordConfirm} onChange={handleChange} placeholder="time" required />
+                              <input
+                                className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color"
+                                type="time"
+                                name="time"
+                                value={state.passwordConfirm}
+                                onChange={handleChange}
+                                placeholder="time"
+                                required
+                              />
                             </div>
                           </div>
                           <div className="md:flex md:items-center mb-6">
-                            <input className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color" type="text" name="notes" value={state.notes} onChange={handleChange} placeholder="notes" required />
+                            <input
+                              className="bg-sky-100 appearance-none border-1 border-sky-900 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-grey focus:border-dark_main_color"
+                              type="text"
+                              name="notes"
+                              value={state.notes}
+                              onChange={handleChange}
+                              placeholder="notes"
+                              required
+                            />
                           </div>
                           <div className="md:flex items-center justify-center">
-                            <button className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            <button
+                              className="shadow bg-dark_main_color text-cyan focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                              type="submit"
+                            >
                               Book Now
                             </button>
-
                           </div>
                         </form>
                       </div>
@@ -130,7 +165,6 @@ const GetDoctor = () => {
                 </div>
               </div>
             </div>
-
           </>
         ) : (
           <div className={`${styles.loadWrap} items-center mx-auto`}>
